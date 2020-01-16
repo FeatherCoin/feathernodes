@@ -25,7 +25,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 """
-Bitcoin protocol access for Bitnodes.
+Feathercoin protocol access for Bitnodes.
 Reference: https://en.bitcoin.it/wiki/Protocol_specification
 
 -------------------------------------------------------------------------------
@@ -33,7 +33,7 @@ Reference: https://en.bitcoin.it/wiki/Protocol_specification
                            protocol version >= 70001
 -------------------------------------------------------------------------------
 [---MESSAGE---]
-[ 4] MAGIC_NUMBER               (\xF9\xBE\xB4\xD9)                  uint32_t
+[ 4] MAGIC_NUMBER               (\x41\x15\x1A\x21)                  uint32_t
 [12] COMMAND                                                        char[12]
 [ 4] LENGTH                     <I (len(payload))                   uint32_t
 [ 4] CHECKSUM                   (sha256(sha256(payload))[:4])       uint32_t
@@ -151,14 +151,14 @@ from cStringIO import StringIO
 from io import SEEK_CUR
 from operator import itemgetter
 
-MAGIC_NUMBER = "\xF9\xBE\xB4\xD9"
-PORT = 8333
+MAGIC_NUMBER = "\x41\x15\x1A\x21"
+PORT = 9336
 MIN_PROTOCOL_VERSION = 70001
 PROTOCOL_VERSION = 70015
 FROM_SERVICES = 0
 TO_SERVICES = 1  # NODE_NETWORK
-USER_AGENT = "/bitnodes.earn.com:0.1/"
-HEIGHT = 478000
+USER_AGENT = "/nodes.feathercoin.com:0.1/"
+HEIGHT = 2990000
 RELAY = 0  # set to 1 to receive all txs
 
 SOCKET_BUFSIZE = 8192
@@ -955,7 +955,7 @@ class Connection(object):
 
 
 def main():
-    to_addr = ("88.99.167.175", PORT)
+    to_addr = ("188.166.227.187", PORT)
     to_services = TO_SERVICES
 
     handshake_msgs = []
